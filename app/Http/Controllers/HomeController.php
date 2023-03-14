@@ -75,8 +75,9 @@ class HomeController extends Controller
             'tgl_pengaduan' => $request->tgl_pengaduan,
             'lokasi' => $request->lokasi,
             'lampiran'=>$request->lampiran,
+            'status'=>$request->status,
             // 'lampiran' => $request->file('lampiran')->store('post-img'),
-            // 'user_id' => $request->user_id,
+            'user_id' => $request->user_id,
         ]);
         return redirect('pengaduan');
     }

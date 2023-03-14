@@ -24,14 +24,24 @@
                         <th scope="col">Aksi</th>
                     </thead>
                     <tbody>
-                        <td></td>
-                        <td></td>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                    </tbody>
+                        @if ($dtPengaduan->count() > 0)
+                        @foreach ($dtPengaduan as $item)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $item->user_id }}</td>
+                          <td>{{ $item->isi }}</td>
+                          <td>{{ $item->lokasi }}</td>
+                          <td>{{ $item->tgl_pengaduan }}</td>
+                          <td><img src="{{$item->lampiran}}" width="100px"></td>
+                          <td>a</td>
+                            @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="10" align="center"> Tidak ada Data</td>
+                                </tr>
+                            @endif
+                          </tr>
+                      </tbody>
                     
                 </table>  
               </div>

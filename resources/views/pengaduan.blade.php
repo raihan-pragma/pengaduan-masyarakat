@@ -101,13 +101,13 @@
                       <th scope="col">Status</th>
                       <th scope="col">Lampiran</th>
                                 </tr>
-                              </thead>
+                              </thead>   
                               <tbody>
                                 @if ($dtPengaduan->count() > 0)
                               @foreach ($dtPengaduan as $item)
                                 <tr>
                                   <td>{{ $loop->iteration }}</td>
-                                  <td>{{ $item->user_id }}</td>
+                                  <td>{{ $item->user->name }}</td>
                                   <td>{{ $item->isi }}</td>
                                   <td>{{ $item->lokasi }}</td>
                                   <td>{{ $item->tgl_pengaduan }}</td>

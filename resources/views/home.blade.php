@@ -163,6 +163,9 @@
                 <h3>Sampaikan Laporan Anda!</h3>
               </div> 
               
+              <input type="hidden" name="status" value="menunggu">
+              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
               <div class="col py-3">
                 <div class="col-md-12">
                   <input type="text" class="form-control bg-light" required name="judul" placeholder="Ketik Judul Laporan" value="{{ old('judul') }}">

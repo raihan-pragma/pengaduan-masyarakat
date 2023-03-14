@@ -49,7 +49,7 @@
     <li class="sidebar-title">Menu</li>
     
     <li
-        class="sidebar-item ">
+        class="sidebar-item {{ ($title === 'Dashboard') ? 'active' : '' }}">
         <a href="/dashboard" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
@@ -57,7 +57,7 @@
     </li>
     
     <li
-        class="sidebar-item">
+        class="sidebar-item {{ ($title === 'Pengaduan') ? 'active' : '' }}">
         <a href="/daftar-pengaduan" class='sidebar-link'>
             <i class="bi bi-stack"></i>
             <span>Daftar Pengaduan</span>
@@ -65,7 +65,7 @@
     </li>
     
     <li
-        class="sidebar-item">
+        class="sidebar-item {{ ($title === 'Tanggapan') ? 'active' : '' }}" >
         <a href="/data-tanggapan" class='sidebar-link'>
             <i class="bi bi-collection-fill"></i>
             <span>Data Tanggapan</span>

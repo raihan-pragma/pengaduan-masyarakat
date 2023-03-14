@@ -15,18 +15,14 @@ class CreatePengaduansTable extends Migration
     {
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->default('3');
+            $table->foreignId('user_id');
             $table->date('tgl_pengaduan');
             $table->string('judul');
             $table->string('isi');
             $table->string('lampiran');
             $table->string('lokasi');
-            // $table->enum('status', ['proses', 'selesai'])->nullable()->default('proses');
+            $table->enum('status', ['menunggu','proses', 'selesai'])->nullable()->default('menunggu');
             $table->timestamps();
-
-            $table->foreign('user_id')
-                    ->on('users')
-                    ->references('id');
         });
     }
 
