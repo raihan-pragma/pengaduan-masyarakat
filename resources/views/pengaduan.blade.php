@@ -99,7 +99,7 @@
                       <th scope="col">Pengaduan</th>
                       <th scope="col">Lokasi</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Lampiran</th>
+                      <th scope="col" class="text-center">Lampiran</th>
                                 </tr>
                               </thead>   
                               <tbody>
@@ -110,8 +110,8 @@
                                   <td>{{ $item->user->name }}</td>
                                   <td>{{ $item->isi }}</td>
                                   <td>{{ $item->lokasi }}</td>
-                                  <td>{{ $item->tgl_pengaduan }}</td>
-                                  <td><img src="{{$item->lampiran}}" width="100px"></td>
+                                  <td>{{ $item->status }}</td>
+                                  <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
                                     @endforeach
                                     @else
                                         <tr>

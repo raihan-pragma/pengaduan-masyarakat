@@ -156,7 +156,7 @@
       <div class="container-fluid mb-4">
         <div class="row justify-content-center">
           <div class="col-md-8 mx-4" data-aos="fade" style="background-color: #7ceec6">
-            <form action="/simpan" class="mx-5" method="post">
+            <form action="/store" class="mx-5" method="post" enctype="multipart/form-data">
               @csrf
               <div class="my-4 mx-4">
               <div class="row py-3">

@@ -30,56 +30,57 @@ class HomeController extends Controller
 
     public function create(Request $request)
     {
-        // $data = Pengaduan::all();
+        // $data = Pengaduan::create($request->all());
         // if($request->hasfile('lampiran')){
-        //     $request->file('lampiran')->move('lampiran/',$request->file('lampiran')->getClientOriginalName());
-        //     $data->foto = $request->file('lampiran')->getClientOriginalName();
+        //     $request->file('lampiran')->move('fotolampiran/',$request->file('lampiran')->getClientOriginalName());
+        //     $data->lampiran = $request->file('lampiran')->getClientOriginalName();
         //     $data->save();
         // }
+        // return redirect('pengaduan')->with('success','Data Berhasil ditambahkan');
     }
     public function store(Request $request)
     {
-        // $data = $request->validate([
-        //     'judul' => 'required',
-        //     'isi' => 'required',
-        //     'tgl_pengaduan' => 'required',
-        //     'lokasi' => 'required',
-        //     'lampiran' => 'image|file|mimes:jpeg,png,jpg|max:5000',
-        //     'user_id' => '1',
-        //     // 'status' => ''
-        // ]);
+        // $data = Pengaduan::create($request->all());
+        // if($request->hasfile('lampiran')){
+        //     $request->file('lampiran')->move('fotolampiran/',$request->file('lampiran')->getClientOriginalName());
+        //     $data->lampiran = $request->file('lampiran')->getClientOriginalName();
+        //     $data->save();
+        // }
+        // return redirect('pengaduan')->with('success','Data Berhasil ditambahkan');
+        $data = $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+            'tgl_pengaduan' => 'required',
+            'lokasi' => 'required',
+            'lampiran' => 'image|file|mimes:jpeg,png,jpg|max:5000',
+            'user_id' => '',
+            'status' => ''
+        ]);
 
-        // if ($request->file('lampiran')) {
-        //     $data['lampiran'] = $request->file('lampiran')->store('post-images');
-        // } 
-
+        if ($request->file('lampiran')) {
+            $data['lampiran'] = $request->file('lampiran')->store('post-images');
+        } 
         // // dd($request->all());
 
-        // Pengaduan::create($data);
+        Pengaduan::create($data);
 
-        // if ($data) {
-            // return redirect('/pengaduan');
-        // } else {
-        //     return redirect('/');
-        // }
-         $data = Pengaduan::all();
-        if($request->hasfile('lampiran')){
-            $request->file('lampiran')->move('lampiran/',$request->file('lampiran')->getClientOriginalName());
-            $data->lampiran = $request->file('lampiran')->getClientOriginalName();
-            $data->save();
+        if ($data) {
+            return redirect('pengaduan');
+        } else {
+            return redirect('/');
         }
 
-        Pengaduan::create([
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'tgl_pengaduan' => $request->tgl_pengaduan,
-            'lokasi' => $request->lokasi,
-            'lampiran'=>$request->lampiran,
-            'status'=>$request->status,
-            // 'lampiran' => $request->file('lampiran')->store('post-img'),
-            'user_id' => $request->user_id,
-        ]);
-        return redirect('pengaduan');
+        // Pengaduan::create([
+        //     'judul' => $request->judul,
+        //     'isi' => $request->isi,
+        //     'tgl_pengaduan' => $request->tgl_pengaduan,
+        //     'lokasi' => $request->lokasi,
+        //     // 'lampiran'=>$request->lampiran,
+        //     'status'=>$request->status,
+        //     // 'lampiran' => $request->file('lampiran')->store('post-img'),
+        //     'user_id' => $request->user_id,
+        // ]);
+        // return redirect('pengaduan');
     }
 
 

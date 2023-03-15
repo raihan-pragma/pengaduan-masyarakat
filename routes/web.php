@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-    Route::middleware(['auth', 'role:user',])->group(function () {
+    Route::middleware(['auth', 'role:user',])->group(function () {     
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/pengaduan', [App\Http\Controllers\HomeController::class, 'pengaduan'])->name('pengaduan');
-        Route::post('/simpan', [App\Http\Controllers\HomeController::class, 'store'])->name('simpan'); 
+        Route::post('/store', [App\Http\Controllers\HomeController::class, 'store'])->name('store'); 
     });
     
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

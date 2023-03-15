@@ -16,34 +16,35 @@
               <div class="card-body">
                 <table class="table table-striped">
                     <thead>
-                        <th scope="col">#</th>
-                        <th scope="col">Pengaduan</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Lampiran</th>
-                        <th scope="col">Aksi</th>
-                    </thead>
-                    <tbody>
-                        @if ($dtPengaduan->count() > 0)
-                        @foreach ($dtPengaduan as $item)
-                        <tr>
-                          <td>{{ $loop->iteration }}</td>
-                          <td>{{ $item->user_id }}</td>
-                          <td>{{ $item->isi }}</td>
-                          <td>{{ $item->lokasi }}</td>
-                          <td>{{ $item->tgl_pengaduan }}</td>
-                          <td><img src="{{$item->lampiran}}" width="100px"></td>
-                          <td>a</td>
-                            @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="10" align="center"> Tidak ada Data</td>
-                                </tr>
-                            @endif
-                          </tr>
-                      </tbody>
-                    
-                </table>  
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Pelapor</th>
+                        <th scope="col" class="text-center">Pengaduan</th>
+                        <th scope="col" class="text-center">Lokasi</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Lampiran</th>
+                        <th scope="col" class="text-center">Aksi</th>
+                                  </tr>
+                                </thead>   
+                                <tbody>
+                                  @if ($dtPengaduan->count() > 0)
+                                @foreach ($dtPengaduan as $item)
+                                  <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td class="text-center">{{ $item->user->name }}</td>
+                                    <td class="text-center">{{ $item->isi }}</td>
+                                    <td class="text-center">{{ $item->lokasi }}</td>
+                                    <td class="text-center">{{ $item->status }}</td>
+                                    <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
+                                    <td class="text-center">ubah|lihat</td>
+                                      @endforeach
+                                      @else
+                                          <tr>
+                                              <td colspan="10" align="center"> Tidak ada Data</td>
+                                          </tr>
+                                      @endif
+                                    </tr>
+                                </tbody>
+                              </table> 
               </div>
             </div>
             </div>  
