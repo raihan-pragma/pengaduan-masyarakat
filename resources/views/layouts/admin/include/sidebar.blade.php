@@ -57,7 +57,7 @@
     </li>
     
     <li
-        class="sidebar-item {{ ($title === 'Pengaduan') ? 'active' : '' }}">
+        class="sidebar-item {{ ($title === 'Daftar Pengaduan') ? 'active' : '' }}">
         <a href="/daftar-pengaduan" class='sidebar-link'>
             <i class="bi bi-stack"></i>
             <span>Daftar Pengaduan</span>
@@ -65,10 +65,18 @@
     </li>
     
     <li
-        class="sidebar-item {{ ($title === 'Tanggapan') ? 'active' : '' }}" >
+        class="sidebar-item {{ ($title === 'Data Tanggapan') ? 'active' : '' }}" >
         <a href="/data-tanggapan" class='sidebar-link'>
             <i class="bi bi-collection-fill"></i>
             <span>Data Tanggapan</span>
+        </a>
+    </li>
+
+    <li
+        class="sidebar-item {{ ($title === 'Data Pengguna') ? 'active' : '' }}" >
+        <a href="/data-pengguna" class='sidebar-link'>
+            <i class="bi bi-person-fill"></i>
+            <span>Data Pengguna</span>
         </a>
     </li>
 </ul>

@@ -5,27 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use App\Http\Requests\StorePengaduanRequest;
 use App\Http\Requests\UpdatePengaduanRequest;
-use Illuminate\Http\Request;
 
-class PengaduanController extends Controller
+class TanggapanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {   
-        // if($request){
-        // $dtPengaduan = Pengaduan::where('user_id->name','like','%'.$request->cari.'%')
-        // ->paginate(5);
-        // }
-        // else{
-            $dtPengaduan = Pengaduan::paginate(5);
-        // }
-        return view('layouts.admin.daftar-pengaduan',[
-            'title' => 'Daftar Pengaduan',
-        ], compact('dtPengaduan','request'));
+    public function index()
+    {
+        $dtPengaduan = Pengaduan::paginate(5);
+        return view('layouts.admin.data-tanggapan',compact('dtPengaduan'),[
+            'title' => 'Data Tanggapan',
+        ]);
     }
 
     /**
@@ -35,7 +28,7 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -44,10 +37,9 @@ class PengaduanController extends Controller
      * @param  \App\Http\Requests\StorePengaduanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePengaduanRequest $request)
     {
-        // Pengaduan::create();
-        // return redirect();
+        //
     }
 
     /**
@@ -69,14 +61,8 @@ class PengaduanController extends Controller
      */
     public function edit($id)
     {
-        $record = Pengaduan::findorfail($id);
-        // dd($record);
-        return view('layouts.admin.tanggapan', 
-        [
-            "title" => "Tanggapan",
-        ], compact('record'));
-    }
 
+    }
 
     /**
      * Update the specified resource in storage.
@@ -85,13 +71,9 @@ class PengaduanController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(UpdatePengaduanRequest $request, Pengaduan $pengaduan)
     {
-        $record = Pengaduan::findorfail($id);
-        $record->update($request->all());
-        
-        // dd($record);
-        return redirect('/data-tanggapan'); 
+        //
     }
 
     /**

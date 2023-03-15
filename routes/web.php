@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.lpage.app');
+    return view('home');
 });
 
 Auth::routes();
@@ -25,7 +25,17 @@ Auth::routes();
         Route::post('/store', [App\Http\Controllers\HomeController::class, 'store'])->name('store'); 
     });
     
+    //Dashboard
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/daftar-pengaduan', [App\Http\Controllers\DashboardController::class, 'daftar_pengaduan'])->name('daftar-pengaduan');
-    Route::get('/data-tanggapan', [App\Http\Controllers\DashboardController::class, 'data_tanggapan'])->name('data-tanggapan');
+
+    //Pengaduan
+    Route::get('/daftar-pengaduan', [App\Http\Controllers\PengaduanController::class, 'index'])->name('daftar-pengaduan');
+    Route::get('/create{id}', [App\Http\Controllers\PengaduanController::class, 'edit'])->name('create');
+    Route::post('/tanggapan{id}', [App\Http\Controllers\PengaduanController::class, 'update'])->name('tanggapan');
+
+    //Tanggapan
+    Route::get('/data-tanggapan', [App\Http\Controllers\TanggapanController::class, 'index'])->name('data-tanggapan');
+
+    //Pengguna
+    Route::get('/data-pengguna', [App\Http\Controllers\PenggunaController::class, 'index'])->name('data-pengguna');
 

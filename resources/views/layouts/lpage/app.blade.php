@@ -54,12 +54,12 @@
           </div>
         </div>
         <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <img src="assets/img/hero.png" class="img-fluid animated" alt="">
+          <img src="assets/img/hero.png" class="img-fluid" alt="">
         </div>
       </div>
     </div>
 
-    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+    {{-- <svg class="hero" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
       <defs>
         <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
       </defs>
@@ -72,7 +72,7 @@
       <g class="wave3">
         <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
       </g>
-    </svg>
+    </svg> --}}
 
     </section><!-- End Hero -->
 
@@ -81,23 +81,23 @@
       <div class="container-fluid">
 
         <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" "fade-right">
             {{-- <a href="https://www.youtube.com/watch?v=StpBR2W8G5A" class="glightbox play-btn mb-4"></a> --}}
           </div>
 
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" "fade-left">
             <h3>Sistem Pengaduan Masyarakat Desa Cimekar</h3>
             <p>Sipemdekar adalah Sistem Pengaduan Masyarakat secara online yang bertujuan untuk
                 mempermudah laporan atau aspirasi yang ingin disampaikan masyarakat kepada Desa Cimekar
             </p>
 
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" "zoom-in" data-aos-delay="200">
               <div class="icon"><i class="bx bx-user"></i></div>
               <h4 class="title"><a href="#pengaduan">Menulis Pengaduan</a></h4>
               <p class="description">Anda bisa menuliskan aspirasi atau pengaduan yang ingin anda sampaikan melalui website Sipemdekar kepada desa cimekar secara online</p>
             </div>
 
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box" "zoom-in" data-aos-delay="300">
               <div class="icon"><i class="bx bx-notepad"></i></div>
               <h4 class="title"><a href="/pengaduan">Melihat Daftar Pengaduan</a></h4>
               <p class="description">Anda dapat melihat aspirasi atau pengaduan yang di sampaikan Masyarakat</p>
@@ -110,10 +110,10 @@
     </section><!-- End About Section -->
 
      <!-- ======= Pengaduan Section ======= -->
-     <section id="pengaduan" class="pengaduan">
+     {{-- <section id="pengaduan" class="pengaduan">
       <div class="container-fluid mb-4">
         <div class="row justify-content-center">
-          <div class="col-md-8 mx-4" data-aos="fade" style="background-color: #7ceec6">
+          <div class="col-md-8 mx-4" "fade" style="background-color: #7ceec6">
             <form action="" class="mx-5" method="">
               @csrf
               <div class="my-4 mx-4">
@@ -159,7 +159,7 @@
                 @auth --}}
                     {{-- <button type="button" ><a href="/pengaduan">Kirim</a> </button>
                 @else --}}
-                    <button type="button" > <a href="{{ route('login') }}">Kirim</a> </button>
+                    {{-- <button type="button" > <a href="{{ route('login') }}">Kirim</a> </button> --}}
                 {{-- @endauth
                 @endif --}}
                 </div>
@@ -169,7 +169,7 @@
         </div>
 
       </div>
-    </section><!-- End Pengaduan Section -->
+    </section><!-- End Pengaduan Section --> --}}
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

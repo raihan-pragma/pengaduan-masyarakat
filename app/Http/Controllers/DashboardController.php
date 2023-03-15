@@ -17,19 +17,4 @@ class DashboardController extends Controller
         ]);
     }
     
-    public function daftar_pengaduan()
-    {   
-        $dtPengaduan = Pengaduan::paginate(5);
-        return view('layouts.admin.daftar-pengaduan',compact('dtPengaduan'),[
-            'title' => 'Pengaduan',
-        ]);
-    }
-
-    public function data_tanggapan()
-    {
-        $dtTanggapan = Tanggapan::paginate(5);
-        return view('layouts.admin.data-tanggapan',[
-            'title' => 'Tanggapan',
-        ]);
-    }
 }

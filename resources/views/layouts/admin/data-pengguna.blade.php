@@ -14,25 +14,28 @@
             <div class="col">
             <div class="card">
               <div class="card-body">
+                  <div class="float-end mb-2">
+                      <button class="btn btn-primary">+Data</button>
+                  </div>
                 <table class="table table-striped">
                     <thead>
                         <th scope="col" class="text-center">#</th>
-                        <th scope="col" class="text-center">Pengaduan</th>
-                        <th scope="col" class="text-center">Lokasi</th>
-                        <th scope="col" class="text-center">Tanggapan</th>
-                        <th scope="col" class="text-center">Lampiran</th>
-                    </thead>
-                    <tbody>
-                        @if ($dtPengaduan->count() > 0)
-                        @foreach ($dtPengaduan as $item)
+                        <th scope="col" class="text-center">Nama</th>
+                        <th scope="col" class="text-center">Role</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Telp</th>
+                        <th scope="col" class="text-center">Aksi</th>
+                      </thead>   
+                      <tbody>
+                        @if ($dtPengguna->count() > 0)
+                        @foreach ($dtPengguna as $item)
                         <tr>
                           <td class="text-center">{{ $loop->iteration }}</td>
-                          <td class="text-center">{{ $item->isi }}</td>
-                          <td class="text-center">{{ $item->lokasi }}</td>
-                          <td class="text-center">{{ $item->tanggapan }}</td>
-                          <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
-
-                          {{-- <td class="text-center">
+                          <td class="text-center">{{ $item->name }}</td>
+                          <td class="text-center">{{ $item->role }}</td>
+                          <td class="text-center">{{ $item->email }}</td>
+                          <td class="text-center">{{ $item->telp }}</td>
+                          <td class="text-center">
                             <button class="btn rounded">
                               <a href="/create" class="text-warning">
                                 <i class="bi bi-pencil-square"></i>
@@ -41,7 +44,7 @@
                                   <i class="bi bi-trash"></i>
                               </a>
                             </button>
-                          </td> --}}
+                          </td>
                         @endforeach
                         @else
                           <tr>

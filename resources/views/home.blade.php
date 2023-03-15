@@ -49,8 +49,8 @@
               <!-- Uncomment below if you prefer to use an image logo -->
               <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
               <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-              <li><a class="nav-link scrollto" href="#pengaduan">Pengaduan</a></li>
               @if (auth()->user('User'))
+              <li><a class="nav-link scrollto" href="#pengaduan">Pengaduan</a></li>
               <li><a class="nav-link scrollto" href="/pengaduan">Daftar Pengaduan</a></li>
               @endif
 
@@ -151,6 +151,7 @@
       </div>
     </section><!-- End About Section -->
 
+    @if (auth()->user('User'))
      <!-- ======= Pengaduan Section ======= -->
      <section id="pengaduan" class="pengaduan">
       <div class="container-fluid mb-4">
@@ -215,6 +216,7 @@
 
       </div>
     </section><!-- End Pengaduan Section -->
+    @endif
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

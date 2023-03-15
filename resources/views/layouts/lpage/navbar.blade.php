@@ -10,8 +10,8 @@
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-                <li><a class="nav-link scrollto" href="#pengaduan">Pengaduan</a></li>
                 @if (auth()->user('User'))
+                <li><a class="nav-link scrollto" href="#pengaduan">Pengaduan</a></li>
                 <li><a class="nav-link scrollto" href="/pengaduan">Daftar Pengaduan</a></li>
                 @endif
 
