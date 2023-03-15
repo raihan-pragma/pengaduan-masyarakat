@@ -163,7 +163,8 @@
               <div class="row py-3">
                 <h3>Sampaikan Laporan Anda!</h3>
               </div> 
-              
+
+              <input type="hidden" name="tanggapan" value="">
               <input type="hidden" name="status" value="menunggu">
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 

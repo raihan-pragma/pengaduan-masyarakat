@@ -17,7 +17,7 @@
                                     <label for="">Tanggapan</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea name="tanggapan" id="" class="form-control" rows="2"></textarea>
+                                    <textarea name="tanggapan" id="" class="form-control" rows="2">{{ $record->tanggapan }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -26,6 +26,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <select name="status" class="form-control">
+                                        <option selected>{{ $record->status }}</option>
                                         <option value="Proses"> Proses</option>
                                         <option value="Selesai"> Selesai</option>
                                     </select>

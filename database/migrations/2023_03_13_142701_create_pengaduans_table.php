@@ -22,6 +22,7 @@ class CreatePengaduansTable extends Migration
             $table->string('lampiran');
             $table->string('lokasi');
             $table->enum('status', ['menunggu','proses', 'selesai', 'ditolak'])->nullable()->default('menunggu');
+            $table->string('tanggapan')->nullable();
             $table->timestamps();
         });
     }

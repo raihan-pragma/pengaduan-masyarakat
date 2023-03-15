@@ -54,6 +54,7 @@ class HomeController extends Controller
             'lokasi' => 'required',
             'lampiran' => 'image|file|mimes:jpeg,png,jpg|max:5000',
             'user_id' => '',
+            'tanggapan' => '',
             'status' => ''
         ]);
 

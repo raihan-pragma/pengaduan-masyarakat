@@ -25,30 +25,31 @@
                     <tbody>
                         @if ($dtPengaduan->count() > 0)
                         @foreach ($dtPengaduan as $item)
+                        {{-- @else (!$item->status == 'menunggu') --}}
                         <tr>
-                          <td class="text-center">{{ $loop->iteration }}</td>
-                          <td class="text-center">{{ $item->isi }}</td>
-                          <td class="text-center">{{ $item->lokasi }}</td>
-                          <td class="text-center">{{ $item->tanggapan }}</td>
-                          <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
-
-                          {{-- <td class="text-center">
-                            <button class="btn rounded">
-                              <a href="/create" class="text-warning">
-                                <i class="bi bi-pencil-square"></i>
-                              </a>|
-                              <a href="" class="text-danger">
-                                  <i class="bi bi-trash"></i>
-                              </a>
-                            </button>
-                          </td> --}}
-                        @endforeach
-                        @else
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $item->isi }}</td>
+                            <td class="text-center">{{ $item->lokasi }}</td>
+                            <td class="text-center">{{ $item->tanggapan }}</td>
+                            <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
+  
+                            {{-- <td class="text-center">
+                              <button class="btn rounded">
+                                <a href="/create" class="text-warning">
+                                  <i class="bi bi-pencil-square"></i>
+                                </a>|
+                                <a href="" class="text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                              </button>
+                            </td> --}}
+                          </tr> 
+                          @endforeach
+                          @else
                           <tr>
                               <td colspan="10" align="center"> Tidak ada Data</td>
                           </tr>
                         @endif
-                        </tr> 
                       </tbody>
                 </table>
               </div>
