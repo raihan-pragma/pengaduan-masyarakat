@@ -49,6 +49,7 @@
               <!-- Uncomment below if you prefer to use an image logo -->
               <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
               <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+              <li><a class="nav-link scrollto" href="/selesai">Hasil Pengaduan</a></li>
               @if (auth()->user('User'))
               <li><a class="nav-link scrollto" href="#pengaduan">Pengaduan</a></li>
               <li><a class="nav-link scrollto" href="/pengaduan">Daftar Pengaduan</a></li>
@@ -101,7 +102,7 @@
       </div>
     </div>
 
-    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+    {{-- <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
       <defs>
         <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
       </defs>
@@ -114,7 +115,7 @@
       <g class="wave3">
         <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
       </g>
-    </svg>
+    </svg> --}}
 
     </section><!-- End Hero -->
 
@@ -123,23 +124,23 @@
       <div class="container-fluid">
 
         <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" "fade-right">
             {{-- <a href="https://www.youtube.com/watch?v=StpBR2W8G5A" class="glightbox play-btn mb-4"></a> --}}
           </div>
 
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
             <h3>Sistem Pengaduan Masyarakat Desa Cimekar</h3>
             <p>Sipemdekar adalah Sistem Pengaduan Masyarakat secara online yang bertujuan untuk
                 mempermudah laporan atau aspirasi yang ingin disampaikan masyarakat kepada Desa Cimekar
             </p>
 
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box"  data-aos-delay="200">
               <div class="icon"><i class="bx bx-user"></i></div>
               <h4 class="title"><a href="#pengaduan">Menulis Pengaduan</a></h4>
               <p class="description">Anda bisa menuliskan aspirasi atau pengaduan yang ingin anda sampaikan melalui website Sipemdekar kepada desa cimekar secara online</p>
             </div>
 
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box"  data-aos-delay="300">
               <div class="icon"><i class="bx bx-notepad"></i></div>
               <h4 class="title"><a href="/pengaduan">Melihat Daftar Pengaduan</a></h4>
               <p class="description">Anda dapat melihat aspirasi atau pengaduan yang di sampaikan Masyarakat</p>
@@ -180,22 +181,31 @@
                 </div>
               </div>
 
-                <div class="col py-3">
-                  <label for="">Tanggal Pengaduan</label>
-                  <div class="col-md-12 input-group date">
-                    <input type="date" class="form-control input-doi bg-light" required name="tgl_pengaduan" placeholder="Pilih Tanggal Kejadian" value="{{ old('tgl_pengaduan') }}">
-                  </div>
-                </div>
+                {{-- <div class="col py-3">
+                  {{-- <label for="">Tanggal Pengaduan</label> --}}
+                  {{-- <div class="col-md-12 input-group date"> --}}
+                    <input type="hidden" class="form-control input-doi bg-light" name="tgl_pengaduan" placeholder="Pilih Tanggal Kejadian" value="{{ old('tgl_pengaduan') }}">
+                  {{-- </div>
+                </div> --}}
 
                 <div class="col py-3">
-                  <label for="">Lokasi</label>
+                  <label for="">Tempat Kejadian</label>
                   <div class="col-md-12">
-                    <input type="text" class="form-control bg-light" required name="lokasi" placeholder="Ketik Tempat Kejadian" value="{{ old('lokasi') }}">
+                    <select name="lokasi" class="form-control">
+                      <option selected>Pilih</option>
+                      <option>Binakarya 1</option>
+                      <option>Binakarya 2</option>
+                      <option>Pasir Wangi</option>
+                      <option>Pasir Kawung</option>
+                      <option>Pasir Pari</option>
+                      <option>Suka Haji</option>
+                      <option>Suka Maju</option>
+                    </select>
                   </div>
                 </div>
 
                 <div class="col py-3">
-                  <label for="">Upload Lampiran</label>
+                  <label for="">Upload Foto Kejadian</label>
                   <div class="col-md-12">
                     <input type="file" class="form-control bg-light" required name="lampiran" value="{{ old('lampiran') }}">
                   </div>
@@ -218,6 +228,11 @@
       </div>
     </section><!-- End Pengaduan Section -->
     @endif
+  <!--Count-->
+  <div class="mt-5 bg-light">
+    <h4 class="text-center">Jumlah Pengaduan</h4>
+    <h1 class="text-center">{{ DB::table('pengaduan')->count() }}</h1>
+  </div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

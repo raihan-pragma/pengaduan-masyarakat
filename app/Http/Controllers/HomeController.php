@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pengaduan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -50,7 +51,7 @@ class HomeController extends Controller
         $data = $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'tgl_pengaduan' => 'required',
+            'tgl_pengaduan' => '',
             'lokasi' => 'required',
             'lampiran' => 'image|file|mimes:jpeg,png,jpg|max:5000',
             'user_id' => '',
@@ -59,7 +60,7 @@ class HomeController extends Controller
         ]);
 
         if ($request->file('lampiran')) {
-            $data['lampiran'] = $request->file('lampiran')->store('post-images');
+            $data['lampiran'] = $request->file('lampiran')->store('post-images');    
         } 
         // // dd($request->all());
 
@@ -88,7 +89,7 @@ class HomeController extends Controller
 
     public function pengaduan()
     {
-        $dtPengaduan = Pengaduan::paginate(5);
+        $dtPengaduan = Pengaduan::where('user_id',Auth::user()->id)->get();
         return view('pengaduan',compact('dtPengaduan'));
     }
 }

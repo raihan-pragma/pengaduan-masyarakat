@@ -2,87 +2,112 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
 
 class PenggunaController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
     /**
-     * Where to redirect users after registration.
+     * Display a listing of the resource.
      *
-     * @var string
+     * @return \Illuminate\Http\Response
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-       
+        $dtPengguna = User::all();
+        return view('layouts.admin.data-pengguna', compact('dtPengguna'),[
+            'title' => 'Data Pengguna',
+            'users' => User::latest()->get()
+        ]);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Show the form for creating a new resource.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Http\Response
      */
-    protected function validator(array $data)
+    public function create()
     {
-        return Validator::make($data, [
+        $roles = Role::latest()->get();
+        return view('layouts.admin.pengguna', compact('roles'),[
+            'title' => 'Daftar Pengguna',
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'nik' => ['required', 'string', 'max:16', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'telp' => ['required', 'string', 'max:13'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
+        $user = User::create([
+            'name' => $data['name'],
+            'nik' => $data['nik'],
+            'email' => $data['email'],
+            'telp' => $data['telp'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        $user->assignRole($request->input('role'));
+        return redirect('/data-pengguna');
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Display the specified resource.
      *
-     * @param  array  $data
-     * @return \App\Models\User
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-
-    public function index()
+    public function show($id)
     {
-        $dtPengguna = User::paginate(5);
-        return view('layouts.admin.data-pengguna',compact('dtPengguna'),[
-            'title' => 'Data Pengguna',
-        ]);
-
+        //
     }
 
-    protected function create(array $data)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $petugas = User::create([
-            'name' => 'Petugas',
-            'email' =>  'petugas@role.test',
-            'telp' => '0895391007455',
-            'password' => bcrypt('password')
-        ]);
+        //
+    }
 
-        $petugas->assignRole('petugas');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

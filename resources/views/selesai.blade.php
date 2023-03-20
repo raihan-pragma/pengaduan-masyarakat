@@ -85,87 +85,37 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" >
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="card mb-4">
         <div class="card-body">
-          <h4 class="card-title">Daftar Pengaduan</h4>
-          <div class="accordion" id="accordionExample">
-            @if ($dtPengaduan->count() > 0)
+          <h4 class="card-title">Daftar Selesai</h4>
+          <table class="table table-striped container">
+            <thead>
+              <th scope="col" class="text-center">Tanggal Pengaduan</th>
+              <th scope="col" class="text-center">Pengaduan</th>
+              <th scope="col" class="text-center">Tempat Kejadian</th>
+              <th scope="col" class="text-center">Tanggapan</th>
+              <th scope="col" class="text-center">Foto Kejadian</th>
+              <th scope="col" class="text-center">Status</th>
+            </thead>   
+            <tbody>
+              {{-- @if ($pengaduan2->count() > 0) --}}
               @foreach ($dtPengaduan as $item)
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a{{ $item->id }}" aria-expanded="true" aria-controls="collapseOne">
-                      {{ $loop->iteration }}. {{ $item->judul }}
-                    </button>
-                  </h2>
-                  <div id="a{{ $item->id }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <div class="row mb-4">
-                        <div class="col">
-                          <label>{{ $item->user->name }}</label>
-                        </div>
-                        <div class="col">
-                          <label>{{ $item->created_at }}</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                      <div class="col mb-2">
-                        <label class="mb-2">Isi Pengaduan</label>
-                        <div class="col-md-12">
-                          <input disabled value="{{ $item->isi }}" class="form-control" >
-                        </div>
-                      </div>
-                      <div class="col">
-                        <label class="mb-2">Tempat Kejadian</label>
-                        <div class="col-md-12">
-                          <input disabled value="{{ $item->lokasi }}" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                    <div class="col">
-                      <label class="mb-2">Status</label>
-                      <div class="col">
-                      @if ($item->status == 'menunggu')
-                        <span class="btn btn-secondary" style="width: 100px" disabled>{{ $item->status }}</span>
-                      @elseif ($item->status == 'proses')
-                        <span class="btn btn-warning" style="width: 100px" disabled>{{ $item->status }}</span>
-                      @elseif ($item->status == 'selesai')
-                        <span class="btn btn-success" style="width: 100px" disabled>{{ $item->status }}</span>
-                      @elseif ($item->status == 'ditolak')
-                        <span class="btn btn-danger" style="width: 100px" disabled>{{ $item->status }}</span>
-                      @endif
-                      </div>
-                    </div>
-                      <div class="col">
-                        <label class="mb-2">Foto Kejadian</label>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#foto{{ $item->id  }}">
-                          <img class="img-fluid rounded" src="{{ asset('/storage/' . $item->lampiran)}}"width="100px">
-                        </button>
-                      </div>
-                      <div class="row">
-                        <label class="mb-2">Tanggapan</label>
-                        @if ($item->tanggapan)
-                        <div class="col">
-                          <textarea name="" id="" rows="4" class="form-control">{{ $item->tanggapan }}</textarea>
-                        </div>
-                        @else
-                          <tr>
-                            <textarea disabled value="Belum Ditanggapi">Belum Ditanggapi</textarea>
-                          </tr>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                @include('modal-foto')
+              @if ($item->status == 'selesai')
+              <tr>
+                <td class="text-center">{{ $item->created_at }}</td>
+                <td class="text-center">{{ $item->isi }}</td>
+                <td class="text-center">{{ $item->lokasi }}</td>
+                <td class="text-center">{{ $item->tanggapan}}</td>
+                <td class="text-center"><img src="{{ asset('/storage/' . $item->lampiran)}} " width="100px"></td>
+                <td class="text-center">
+                    <button class="btn btn-success" style="width: 100px">{{ $item->status }}</button>
+                  </td>
+                @endif
               @endforeach
-            @else
-                <tr>
-                    <td colspan="10" align="center"> Tidak ada Data</td>
-                </tr>
-            @endif
-          </div>
+              </tr> 
+            </tbody>
+          </table> 
         </div>
       </div>
     </div>  

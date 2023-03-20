@@ -84,7 +84,7 @@
 <section id="hero">
     <div class="container col-md-8">
         <div class="row justify-content-center">
-            <div class="col-md-8 mb-4">
+            <div class="col-md-8">
                 <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -113,6 +113,20 @@
                                 <input id="nik" type="number" class="form-control @error('nik') is-invalid @enderror" name="nik" value="{{ old('nik') }}" required autocomplete="nik" autofocus>
 
                                 @error('nik')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="telp" class="col-md-4 col-form-label text-md-end">{{ __('Telepon') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="telp" type="number" class="form-control @error('telp') is-invalid @enderror" name="telp" value="{{ old('telp') }}" required autocomplete="telp" autofocus>
+
+                                @error('telp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -156,20 +170,6 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="telp" class="col-md-4 col-form-label text-md-end">{{ __('Telepon') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="telp" type="number" class="form-control @error('telp') is-invalid @enderror" name="telp" value="{{ old('telp') }}" required autocomplete="telp" autofocus>
-
-                                @error('telp')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -182,7 +182,7 @@
             </div>
         </div>
     </div>
-</div>x
+</div>
 </section><!-- End Hero -->
 <!-- ======= Footer ======= -->
 <footer id="footer" class="">

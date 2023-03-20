@@ -16,7 +16,7 @@ class CreatePengaduansTable extends Migration
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->date('tgl_pengaduan');
+            $table->date('tgl_pengaduan')->nullable();
             $table->string('judul');
             $table->string('isi');
             $table->string('lampiran');

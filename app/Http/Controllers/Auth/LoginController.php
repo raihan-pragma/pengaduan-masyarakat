@@ -50,6 +50,6 @@ class LoginController extends Controller
         //     return redirect()->route('dashboard');
         // }
 
-        return redirect('/dashboard');
+        return redirect('/daftar-pengaduan');
     }
 }

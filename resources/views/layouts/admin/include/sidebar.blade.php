@@ -48,13 +48,13 @@
         </div>
     <li class="sidebar-title">Menu</li>
     
-    <li
+    {{-- <li
         class="sidebar-item {{ ($title === 'Dashboard') ? 'active' : '' }}">
         <a href="/dashboard" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
         </a>
-    </li>
+    </li> --}}
     
     <li
         class="sidebar-item {{ ($title === 'Daftar Pengaduan') ? 'active' : '' }}">
@@ -72,6 +72,7 @@
         </a>
     </li>
 
+    @if (auth()->user('User')) 
     <li
         class="sidebar-item {{ ($title === 'Data Pengguna') ? 'active' : '' }}" >
         <a href="/data-pengguna" class='sidebar-link'>
@@ -79,6 +80,7 @@
             <span>Data Pengguna</span>
         </a>
     </li>
+    @endif
 </ul>
 </div>
 </div>

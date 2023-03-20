@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+Route::get('/selesai', function(){
+    return view('selesai',[
+        'dtPengaduan' => Pengaduan::all()
+    ]);
 });
 
 Auth::routes();
@@ -38,4 +44,14 @@ Auth::routes();
 
     //Pengguna
     Route::get('/data-pengguna', [App\Http\Controllers\PenggunaController::class, 'index'])->name('data-pengguna');
+    Route::get('/pengguna', [App\Http\Controllers\PenggunaController::class, 'create'])->name('pengguna');
 
+    Route::get('/cetaklaporan', [App\Http\Controllers\PengaduanController::class, 'cetaklaporan'])->name('cetaklaporan');
+    Route::get('/laporan/{tglAwal}/{tglAkhir}', [App\Http\Controllers\PengaduanController::class, 'laporan'])->name('laporan');
+    // Route::get('/laporan',function(){
+    //     $pengaduan1 = Pengaduan::count();
+    //     $pengaduan2 = Pengaduan::orderBy('created_at','desc')->get();
+    //     return view('laporan',compact('pengaduan1','pengaduan2'),[
+    //         'pengaduans'=>Pengaduan::paginate()
+    //     ]);
+    // });

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
     <link rel="shortcut icon" href="assets/img/sipemdekar.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/img/sipemdekar.png" type="image/png">
+    <link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
     
 <link rel="stylesheet" href="assets/css/shared/iconly.css">
 
@@ -47,6 +49,8 @@
 <!-- Need: Apexcharts -->
 <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/dashboard.js"></script>
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/js/pages/simple-datatables.js"></script>
 
 </body>
 
